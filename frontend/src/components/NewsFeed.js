@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CategorySelector from "./CategorySelector"; // Import CategorySelector
 
-const News = () => {
+const NewsFeed = () => {
   const [articles, setArticles] = useState([]);
-  const [categories, setCategories] = useState([]); // Tracks selected categories
+  const [categories, setCategories] = useState(["general"]); // Tracks selected categories
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -13,7 +13,7 @@ const News = () => {
     setLoading(true);
     try {
       const query = selectedCategories.join(","); // Convert selected categories to query string
-      const response = await axios.get("http://localhost:5000/news", {
+      const response = await axios.get("http://localhost:5000/newsFeed", {
         params: { categories: query }, // Send selected categories as a query parameter
       });
       setArticles(response.data.articles);
@@ -41,7 +41,10 @@ const News = () => {
   return (
     <div>
       <h1>News Feed</h1>
-      <CategorySelector onCategoryChange={setCategories} />{" "}
+      <CategorySelector
+        selectedCategories={categories}
+        onCategoryChange={setCategories}
+      />{" "}
       {/* Pass function to update categories */}
       <div>
         {articles.map((article, index) => (
@@ -58,4 +61,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default NewsFeed;

@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 
 const categories = [
-  "Technology",
-  "Sports",
-  "Economy",
-  "Health",
-  "Science",
-  "Entertainment",
+  "general",
+  "technology",
+  "sports",
+  "economy",
+  "health",
+  "science",
+  "entertainment",
 ];
 
-const CategorySelector = ({ onCategoryChange }) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
-
+const CategorySelector = ({ selectedCategories, onCategoryChange }) => {
   const toggleCategory = (category) => {
     let updated;
     if (selectedCategories.includes(category)) {
@@ -19,7 +18,6 @@ const CategorySelector = ({ onCategoryChange }) => {
     } else {
       updated = [...selectedCategories, category];
     }
-    setSelectedCategories(updated);
     onCategoryChange(updated); // send up to parent
   };
 
