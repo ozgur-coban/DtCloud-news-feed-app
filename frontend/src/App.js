@@ -1,10 +1,10 @@
 import React from "react";
-import News from "./News";
+import NewsFeed from "./components/NewsFeed";
 
 function App() {
   return (
     <div className="App">
-      <News />
+      <NewsFeed />
     </div>
   );
 }
