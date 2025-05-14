@@ -8,10 +8,14 @@ const Login = ({ onLogin, switchToRegister }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/auth/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        {
+          username,
+          password,
+        }
+      );
+
       console.log("Logged in:", response.data);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", response.data.username);

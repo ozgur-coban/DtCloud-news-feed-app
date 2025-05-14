@@ -8,10 +8,14 @@ const Register = ({ onSuccess, switchToLogin }) => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/auth/register", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        {
+          username,
+          password,
+        }
+      );
+
       console.log("Registered:", response.data);
       alert("Registration successful!");
       onSuccess?.();
