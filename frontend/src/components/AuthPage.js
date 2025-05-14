@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/AuthForm.css";
 import Login from "./Login";
 import Register from "./Register";
 

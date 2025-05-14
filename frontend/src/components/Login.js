@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/AuthForm.css";
 
 const Login = ({ onLogin, switchToRegister }) => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const Login = ({ onLogin, switchToRegister }) => {
       console.log("Logged in:", response.data);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", response.data.username);
-      onLogin?.(); // callback to switch to NewsFeed or set isLoggedIn
+      onLogin?.();
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
       alert("Login failed");
@@ -22,7 +23,7 @@ const Login = ({ onLogin, switchToRegister }) => {
   };
 
   return (
-    <div>
+    <div className="auth-form">
       <h2>Login</h2>
       <input
         type="text"
@@ -37,9 +38,14 @@ const Login = ({ onLogin, switchToRegister }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-      <p>
+      <p style={{ textAlign: "center", marginTop: "10px" }}>
         Don’t have an account?{" "}
-        <button onClick={switchToRegister}>Register here</button>
+        <span
+          onClick={switchToRegister}
+          style={{ color: "#007bff", cursor: "pointer" }}
+        >
+          Register here
+        </span>
       </p>
     </div>
   );

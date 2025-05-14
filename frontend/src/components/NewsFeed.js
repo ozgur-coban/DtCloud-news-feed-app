@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/NewsFeed.css";
 import CategorySelector from "./CategorySelector"; // Import CategorySelector
 
 const NewsFeed = () => {
@@ -21,6 +22,7 @@ const NewsFeed = () => {
         params: { categories: query }, // Send selected categories as a query parameter
       });
       setArticles(response.data.articles);
+      console.log(response.data);
       setLoading(false);
     } catch (err) {
       setError("Failed to fetch news");
@@ -30,9 +32,7 @@ const NewsFeed = () => {
 
   // Fetch news whenever categories change
   useEffect(() => {
-    if (categories.length > 0) {
-      fetchNews(categories); // Trigger news fetch based on selected categories
-    }
+    fetchNews(categories); // Trigger news fetch based on selected categories
 
     // Save the selected categories in localStorage
     localStorage.setItem("selectedCategories", JSON.stringify(categories));
@@ -46,17 +46,23 @@ const NewsFeed = () => {
   }
 
   return (
-    <div>
+    <div className="news-feed-container">
       <h1>News Feed</h1>
       <CategorySelector
         selectedCategories={categories}
         onCategoryChange={setCategories}
-      />{" "}
-      {/* Pass function to update categories */}
-      <div>
+      />
+      <div className="news-list">
         {articles.map((article, index) => (
-          <div key={index} className="article">
-            <h2>{article.title}</h2>
+          <div key={index} className="news-card">
+            {article.urlToImage && (
+              <img
+                src={article.urlToImage}
+                alt={article.title}
+                className="news-card-image"
+              />
+            )}
+            <h4>{article.title}</h4>
             <p>{article.description}</p>
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               Read more

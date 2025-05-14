@@ -1,6 +1,6 @@
 // src/App.js
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./styles/App.css";
 import AuthPage from "./components/AuthPage";
 import NewsFeed from "./components/NewsFeed";
 

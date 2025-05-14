@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/AuthForm.css";
 
 const Register = ({ onSuccess, switchToLogin }) => {
   const [username, setUsername] = useState("");
@@ -13,7 +14,7 @@ const Register = ({ onSuccess, switchToLogin }) => {
       });
       console.log("Registered:", response.data);
       alert("Registration successful!");
-      onSuccess?.(); // optional callback after register
+      onSuccess?.();
     } catch (error) {
       console.error(
         "Registration failed:",
@@ -24,7 +25,7 @@ const Register = ({ onSuccess, switchToLogin }) => {
   };
 
   return (
-    <div>
+    <div className="auth-form">
       <h2>Register</h2>
       <input
         type="text"
@@ -39,9 +40,14 @@ const Register = ({ onSuccess, switchToLogin }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleRegister}>Register</button>
-      <p>
+      <p style={{ textAlign: "center", marginTop: "10px" }}>
         Already have an account?{" "}
-        <button onClick={switchToLogin}>Login here</button>
+        <span
+          onClick={switchToLogin}
+          style={{ color: "#007bff", cursor: "pointer" }}
+        >
+          Login here
+        </span>
       </p>
     </div>
   );
