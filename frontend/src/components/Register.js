@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/AuthForm.css";
+import { BACKEND_URL } from "../config";
 
 const Register = ({ onSuccess, switchToLogin }) => {
   const [username, setUsername] = useState("");
@@ -8,13 +9,10 @@ const Register = ({ onSuccess, switchToLogin }) => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/register`,
-        {
-          username,
-          password,
-        }
-      );
+      const response = await axios.post(`${BACKEND_URL}/auth/register`, {
+        username,
+        password,
+      });
 
       console.log("Registered:", response.data);
       alert("Registration successful!");

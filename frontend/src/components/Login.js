@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/AuthForm.css";
+import { BACKEND_URL } from "../config";
 
 const Login = ({ onLogin, switchToRegister }) => {
   const [username, setUsername] = useState("");
@@ -8,13 +9,10 @@ const Login = ({ onLogin, switchToRegister }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
-        {
-          username,
-          password,
-        }
-      );
+      const response = await axios.post(`${BACKEND_URL}/auth/login`, {
+        username,
+        password,
+      });
 
       console.log("Logged in:", response.data);
       localStorage.setItem("token", response.data.token);

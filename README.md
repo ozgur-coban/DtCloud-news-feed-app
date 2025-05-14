@@ -1,4 +1,7 @@
-# Customizable News Feed Web App
+# DtCloud News Feed App
+
+🚀 **Live Frontend**: [https://dt-cloud-news-feed-app.vercel.app](https://dt-cloud-news-feed-app.vercel.app)  
+🌐 **Live Backend**: [https://dtcloud-news-feed-app.onrender.com](https://dtcloud-news-feed-app.onrender.com)
 
 A simple and customizable news feed web app built with React (frontend) and Node.js (backend), providing category-based filtering of news articles from multiple sources.
 

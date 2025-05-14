@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/NewsFeed.css";
 import CategorySelector from "./CategorySelector";
+import { BACKEND_URL } from "../config";
 
 const NewsFeed = () => {
   const [articles, setArticles] = useState([]);
@@ -17,12 +18,9 @@ const NewsFeed = () => {
     setLoading(true);
     try {
       const query = selectedCategories.join(","); // Convert selected categories to query string
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/newsFeed`,
-        {
-          params: { categories: query },
-        }
-      );
+      const response = await axios.get(`${BACKEND_URL}/newsFeed`, {
+        params: { categories: query },
+      });
       setArticles(response.data.articles);
       console.log(response.data);
       setLoading(false);
