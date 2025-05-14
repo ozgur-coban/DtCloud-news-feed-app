@@ -34,7 +34,7 @@ const loginUser = async (req, res) => {
     expiresIn: "1h",
   });
 
-  res.json({ token });
+  res.json({ token, username });
 };
 
 module.exports = { registerUser, loginUser };
