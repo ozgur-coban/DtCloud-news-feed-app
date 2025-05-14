@@ -7,8 +7,15 @@ const authRoutes = require("./routes/auth");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://dt-cloud-news-feed-app.vercel.app/",
+];
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 app.use(express.json());
 
 app.use("/newsFeed", newsRoutes);

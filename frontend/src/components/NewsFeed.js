@@ -17,9 +17,12 @@ const NewsFeed = () => {
     setLoading(true);
     try {
       const query = selectedCategories.join(","); // Convert selected categories to query string
-      const response = await axios.get("http://localhost:5000/newsFeed", {
-        params: { categories: query },
-      });
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/newsFeed`,
+        {
+          params: { categories: query },
+        }
+      );
       setArticles(response.data.articles);
       console.log(response.data);
       setLoading(false);
