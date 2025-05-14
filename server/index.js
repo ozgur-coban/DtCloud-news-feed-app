@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://dt-cloud-news-feed-app.vercel.app/",
+  "https://dt-cloud-news-feed-app.vercel.app",
 ];
 app.use(
   cors({
