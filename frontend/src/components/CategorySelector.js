@@ -16,7 +16,7 @@ const CategorySelector = ({ selectedCategories, onCategoryChange }) => {
     if (selectedCategories.includes(category)) {
       updated = selectedCategories.filter((c) => c !== category);
     } else {
-      updated = [...selectedCategories, category];
+      updated = [category, ...selectedCategories];
     }
     onCategoryChange(updated); // send up to parent
   };

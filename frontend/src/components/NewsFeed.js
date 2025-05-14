@@ -4,7 +4,11 @@ import CategorySelector from "./CategorySelector"; // Import CategorySelector
 
 const NewsFeed = () => {
   const [articles, setArticles] = useState([]);
-  const [categories, setCategories] = useState(["general"]); // Tracks selected categories
+  const [categories, setCategories] = useState(() => {
+    // Try to load the saved preferences from localStorage, default to "general" if none
+    const savedCategories = localStorage.getItem("selectedCategories");
+    return savedCategories ? JSON.parse(savedCategories) : ["general"];
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -29,6 +33,9 @@ const NewsFeed = () => {
     if (categories.length > 0) {
       fetchNews(categories); // Trigger news fetch based on selected categories
     }
+
+    // Save the selected categories in localStorage
+    localStorage.setItem("selectedCategories", JSON.stringify(categories));
   }, [categories]); // Dependency on categories state
 
   if (loading) {
