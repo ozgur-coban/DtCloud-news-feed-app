@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/NewsFeed.css";
-import CategorySelector from "./CategorySelector"; // Import CategorySelector
+import CategorySelector from "./CategorySelector";
 
 const NewsFeed = () => {
   const [articles, setArticles] = useState([]);
@@ -13,13 +13,12 @@ const NewsFeed = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Function to fetch news based on selected categories
   const fetchNews = async (selectedCategories) => {
     setLoading(true);
     try {
       const query = selectedCategories.join(","); // Convert selected categories to query string
       const response = await axios.get("http://localhost:5000/newsFeed", {
-        params: { categories: query }, // Send selected categories as a query parameter
+        params: { categories: query },
       });
       setArticles(response.data.articles);
       console.log(response.data);
@@ -32,11 +31,11 @@ const NewsFeed = () => {
 
   // Fetch news whenever categories change
   useEffect(() => {
-    fetchNews(categories); // Trigger news fetch based on selected categories
+    fetchNews(categories);
 
     // Save the selected categories in localStorage
     localStorage.setItem("selectedCategories", JSON.stringify(categories));
-  }, [categories]); // Dependency on categories state
+  }, [categories]);
 
   if (loading) {
     return <div>Loading...</div>;

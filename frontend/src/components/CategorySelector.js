@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import "../styles/CategorySelector.css";
 
 const categories = [
   "general",
   "technology",
   "sports",
-
   "health",
   "science",
   "entertainment",

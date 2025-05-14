@@ -1,6 +1,5 @@
-// src/AuthTestWrapper.js
 import React from "react";
-import AuthPage from "./components/AuthPage"; // Adjust path as needed
+import AuthPage from "./components/AuthPage";
 
 const AuthTestWrapper = () => {
   return (

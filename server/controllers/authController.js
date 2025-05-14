@@ -5,7 +5,6 @@ const users = []; // In-memory user store
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key";
 
-// Register user
 const registerUser = async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password)
@@ -20,7 +19,6 @@ const registerUser = async (req, res) => {
   res.status(201).json({ message: "User registered successfully" });
 };
 
-// Login user
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
   const user = users.find((u) => u.username === username);
