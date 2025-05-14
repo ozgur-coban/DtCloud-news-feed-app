@@ -1,5 +1,6 @@
 // src/App.js
 import React, { useState, useEffect } from "react";
+import "./App.css";
 import AuthPage from "./components/AuthPage";
 import NewsFeed from "./components/NewsFeed";
 
@@ -22,7 +23,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app-wrapper">
       {isLoggedIn ? (
         <>
           <button onClick={handleLogout}>Logout</button>

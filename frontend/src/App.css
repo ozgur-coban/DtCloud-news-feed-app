@@ -1,0 +1,31 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.app-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .app-wrapper {
+    padding: 0.5rem;
+  }
+
+  .article h2 {
+    font-size: 1.1rem;
+  }
+
+  .article p {
+    font-size: 0.95rem;
+  }
+
+  .article a {
+    display: block;
+    margin-top: 0.5rem;
+  }
+}
