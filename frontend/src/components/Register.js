@@ -6,8 +6,11 @@ import { BACKEND_URL } from "../config";
 const Register = ({ onSuccess, switchToLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleRegister = async () => {
+    setLoading(true);
+
     try {
       const response = await axios.post(`${BACKEND_URL}/auth/register`, {
         username,
@@ -23,6 +26,8 @@ const Register = ({ onSuccess, switchToLogin }) => {
         error.response?.data || error.message
       );
       alert("Registration failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,15 +38,19 @@ const Register = ({ onSuccess, switchToLogin }) => {
         type="text"
         placeholder="Username"
         value={username}
+        disabled={loading}
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
+        disabled={loading}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleRegister}>Register</button>
+      <button onClick={handleRegister} disabled={loading}>
+        {loading ? "Registering..." : "Register"}
+      </button>
       <p style={{ textAlign: "center", marginTop: "10px" }}>
         Already have an account?{" "}
         <span
