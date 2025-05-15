@@ -7,8 +7,16 @@ const Register = ({ onSuccess, switchToLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleRegister = async () => {
+    if (!isValidEmail(username)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     setLoading(true);
 
     try {
@@ -36,11 +44,14 @@ const Register = ({ onSuccess, switchToLogin }) => {
       <h2>Register</h2>
       <input
         type="text"
-        placeholder="Username"
+        placeholder="e.g. johndoe@example.com"
         value={username}
         disabled={loading}
         onChange={(e) => setUsername(e.target.value)}
       />
+      <small style={{ color: "#888", fontSize: "12px" }}>
+        Example: johndoe@example.com
+      </small>
       <input
         type="password"
         placeholder="Password"
