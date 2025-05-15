@@ -1,129 +1,114 @@
 # DtCloud News Feed App
 
-🚀 **Live Frontend**: [https://dt-cloud-news-feed-app.vercel.app](https://dt-cloud-news-feed-app.vercel.app)  
-🌐 **Live Backend**: [https://dtcloud-news-feed-app.onrender.com](https://dtcloud-news-feed-app.onrender.com)
+🧭 **User Guide – DtCloud News Feed App**  
+Welcome to the DtCloud News Feed App — a customizable news feed platform where you can filter articles by category, register/login securely, and view curated headlines from multiple sources.
 
-A simple and customizable news feed web app built with React (frontend) and Node.js (backend), providing category-based filtering of news articles from multiple sources.
+## 🚀 Quick Links
+- **Live App (Frontend):** [https://dt-cloud-news-feed-app.vercel.app](https://dt-cloud-news-feed-app.vercel.app)  
+- **Live Server (Backend):** [https://dtcloud-news-feed-app.onrender.com](https://dtcloud-news-feed-app.onrender.com)  
+- **GitHub Repo:** [https://github.com/ozgur-coban/DtCloud-news-feed-app](https://github.com/ozgur-coban/DtCloud-news-feed-app)
 
-## Features
+## 🛠️ Local Setup Instructions
 
-- **Category-based Filtering**: Users can filter news by selecting one or more categories (e.g., Technology, Sports, Business).
-- **Image Previews**: Articles display image previews if available.
-- **Secure Authentication**: The app supports secure login and registration functionality using JWT tokens.
-- **Responsive Layout**: The layout adapts to different screen sizes and device types.
-- **News API Integration**: The app fetches news articles from external APIs based on selected categories.
+### 1. Prerequisites
+Make sure you have the following installed:  
+- **Node.js** (v12+)  
+- **npm** or **yarn**
 
-## Tech Stack
-
-- **Frontend**: React, CSS, Axios
-- **Backend**: Node.js, Express
-- **Authentication**: JWT-based authentication
-
-## Getting Started
-
-### Prerequisites
-
-Ensure you have the following installed:
-
-- Node.js (v12 or higher)
-- npm or yarn
-
-### Clone the Repository
-
+### 2. Clone the Project
 ```bash
 git clone https://github.com/ozgur-coban/DtCloud-news-feed-app
 cd DtCloud-news-feed-app
 ```
 
-### Install Dependencies
-
-Install both the frontend and backend dependencies:
-
-**For Frontend (React)**
-
+### 3. Install Dependencies
+**Frontend**
 ```bash
 cd frontend
 npm install
 ```
 
-**For Backend (Node.js)**
-
+**Backend**
 ```bash
-cd server
+cd ../server
 npm install
 ```
 
-### Running the App Locally
-
-**Start the Backend Server**
+### 4. Create Environment File (REQUIRED)
+You must create a `.env` file inside the `server/` folder before running the backend.
 
 ```bash
 cd server
-node index.js
+touch .env
 ```
 
-This will start the backend server on `http://localhost:5000`.
-
-**Start the Frontend Development Server**
-
-```bash
-cd frontend
-npm start
+Then open `.env` and add:
 ```
-
-This will start the frontend development server on `http://localhost:3000`.
-
-Once both servers are running, the app will be available at `http://localhost:3000` in your browser.
-
-### Environment Variables
-
-If you need to configure your app (for example, API keys for fetching news), create a `.env` file in the backend and add necessary variables,Closer to home, like this:
-
-```ini
 NEWS_API_KEY=your-news-api-key
 JWT_SECRET=your-jwt-secret
 PORT=5000
 ```
 
-### Register and Login
+⚠️ **Without this step, the backend server will not start properly.**
 
-- **To register**: Use the "Register" page to create a new user by entering a username and password.
-- **To login**: After registering, use the "Login" page to enter your credentials and receive a JWT token. The token will be stored in the local storage for authentication.
+### 5. Start the App Locally
+**Start Backend (API Server)**
+```bash
+cd server
+node index.js
+```
+Server will run at: [http://localhost:5000](http://localhost:5000)
 
-### Selecting Categories
+**Start Frontend (React)**
+```bash
+cd frontend
+npm start
+```
+Frontend will run at: [http://localhost:3000](http://localhost:3000)
 
-Once logged in, you can select categories of interest from the Category Selector to filter news articles accordingly. Categories can be customized by the user, and news will be fetched from the server based on those selections.
+✅ Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-### Viewing News Articles
+## 🧪 Using the App
 
-The articles fetched from the API will be displayed in a list, with the following details:
+### Register
+- Click **Register here**  
+- Enter a username and password  
+- You will be logged in and redirected  
 
-- Article title
-- Article description
-- Image preview (if available)
-- A link to read the full article
+### Login
+- Use your registered credentials  
+- On successful login, a JWT token is saved locally  
+
+### Filter News
+- Select categories like **Technology**, **Health**, or **Sports**  
+- The news feed updates based on your preferences  
+
+### View Articles
+Each article card shows:  
+✅ **Title**  
+📝 **Description**  
+🖼️ **Image** (if available)  
+🔗 **Link to full article**  
 
 ### Logout
+- Click **Logout** to securely end your session  
 
-When you're done, click the "Logout" button to log out of your account. The JWT token will be cleared from local storage.
-
-## File Structure
-
+## 📁 File Structure (Simplified)
 ```
-your-repo-name/
-├── backend/              # Backend code (Node.js)
-│   ├── controllers/      # API route handlers
-│   ├── routes/           # API routes
-│   ├── index.js         # Entry point for the backend
-│   └── .env              # Environment variables (e.g., API keys)
-├── frontend/             # Frontend code (React)
+DtCloud-news-feed-app/
+├── server/              # Backend (Node.js, Express)
+│   ├── .env             # Required env vars (must create!)
+│   ├── index.js         # Entry point
+│   ├── controllers/     # Route logic
+│   └── routes/          # API routes
+├── frontend/            # Frontend (React)
 │   ├── src/
-│   │   ├── components/   # React components (NewsFeed, Login, Register)
-│   │   ├── App.js        # Main React component
-│   │   ├── index.js      # Entry point for the frontend
-│   │   └── styles/       # CSS for styling
-│   ├── package.json      # Frontend dependencies
-├── .gitignore            # Git ignore file
-├── README.md             # This file
-└── package.json          # Root package.json (for managing dependencies)
+│   │   ├── components/  # UI components (Login, Register, NewsFeed)
+│   │   ├── styles/      # CSS
+│   │   └── App.js       # Main app
 ```
+
+## ✅ Notes
+- The app works both locally and online.  
+- For local testing, the app falls back to [http://localhost:5000](http://localhost:5000) if no `REACT_APP_BACKEND_URL` is provided.  
+- Example `.env` variables are only required for backend in `server/.env`.
